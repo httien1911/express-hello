@@ -1,0 +1,26 @@
+extends ../layouts/common
+
+block content
+	h1 users
+
+	a(href="/users/create") new
+
+	form(action="/users/search", method="GET")
+		input(type="text", name="q")
+		button Search
+
+	table.table
+		tr
+			th Avatar
+			th Name
+			th Age
+			th Actions
+
+		each user in users
+			tr
+				td
+					img(src=user.avatar, width = "60")
+				td= user.name
+				td= user.age
+				td
+					a.btn.btn-light(href='/users/' + user.id) View
